@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>AniméQuiz - Testez vos connaissances sur les animés</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AniméQuiz</h1>
+            <p>Testez vos connaissances sur les animés japonais</p>
+        </header>
+        
+        <main>
+            <!-- Écran d'accueil -->
+            <section id="home-screen">
+                <h2>Bienvenue sur AniméQuiz!</h2>
+                <p>Choisissez une catégorie:</p>
+                <ul id="categories">
+                    <li><button onclick="startQuiz('shonen')">Shonen</button></li>
+                    <li><button onclick="startQuiz('seinen')">Seinen</button></li>
+                    <li><button onclick="startQuiz('classics')">Classiques</button></li>
+                    <li><button onclick="startQuiz('movies')">Films d'animation</button></li>
+                </ul>
+            </section>
+            
+            <!-- Écran de quiz -->
+            <section id="quiz-screen" style="display: none;">
+                <div id="quiz-header">
+                    <h2 id="quiz-title">Titre du quiz</h2>
+                    <div id="quiz-progress">Question <span id="current-question">1</span>/<span id="total-questions">10</span></div>
+                </div>
+                
+                <div id="question-container">
+                    <h3 id="question-text">Question ici</h3>
+                    <div id="options-container">
+                        <!-- Les options seront insérées ici -->
+                    </div>
+                </div>
+                
+                <div id="feedback" style="display: none;">
+                    <p id="feedback-text"></p>
+                    <button id="next-button" onclick="nextQuestion()">Question suivante</button>
+                </div>
+            </section>
+            
+            <!-- Écran de résultat -->
+            <section id="result-screen" style="display: none;">
+                <h2>Résultats</h2>
+                <p>Vous avez obtenu <span id="score">0</span> sur <span id="max-score">10</span></p>
+                <div id="result-message"></div>
+                <button onclick="returnToHome()">Retour à l'accueil</button>
+            </section>
+        </main>
+        
+        <footer>
+            <p>AniméQuiz &copy; 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        // Base de données des questions
+        const quizData = {
+            shonen: [
+                {
+                    question: "Quel est le nom du protagoniste de 'One Piece'?",
+                    options: ["Luffy", "Naruto", "Goku", "Ichigo"],
+                    answer: 0
+                },
+                {
+                    question: "Quelle est la technique signature de Naruto?",
+                    options: ["Kamehameha", "Rasengan", "Chidori", "Bankai"],
+                    answer: 1
+                },
+                {
+                    question: "Dans 'Demon Slayer', quelle est la couleur du sabre de Tanjiro?",
+                    options: ["Bleu", "Vert", "Rouge", "Noir"],
+                    answer: 2
+                },
+                {
+                    question: "Quel est le but principal de Gon dans 'Hunter x Hunter'?",
+                    options: ["Devenir le plus fort", "Trouver le One Piece", "Retrouver son père", "Devenir Hokage"],
+                    answer: 2
+                },
+                {
+                    question: "Quelle est la spécialité culinaire de Soma dans 'Food Wars'?",
+                    options: ["Sushi", "Ramen", "Diner japonais", "Cuisine française"],
+                    answer: 2
+                }
+            ],
+            seinen: [
+                {
+                    question: "Quel est le nom du protagoniste de 'Berserk'?",
+                    options: ["Griffith", "Guts", "Casca", "Judeau"],
+                    answer: 1
+                },
+                {
+                    question: "Dans 'Tokyo Ghoul', quelle est la particularité des goules?",
+                    options: ["Elles ne peuvent manger que des humains", "Elles sont immortelles", "Elles peuvent voler", "Elles détestent le café"],
+                    answer: 0
+                },
+                {
+                    question: "Qui est l'antagoniste principal dans 'Monster'?",
+                    options: ["Dr. Tenma", "Anna Liebert", "Johan Liebert", "Inspector Lunge"],
+                    answer: 2
+                },
+                {
+                    question: "Quel est le thème principal de 'Vinland Saga'?",
+                    options: ["Les ninjas", "Les samouraïs", "Les vikings", "Les extraterrestres"],
+                    answer: 2
+                },
+                {
+                    question: "Dans 'Parasyte', quelle partie du corps de Shinichi est infectée?",
+                    options: ["Sa tête", "Son bras droit", "Son cœur", "Sa jambe gauche"],
+                    answer: 1
+                }
+            ],
+            classics: [
+                {
+                    question: "Qui a créé 'Astro Boy'?",
+                    options: ["Hayao Miyazaki", "Osamu Tezuka", "Akira Toriyama", "Hideaki Anno"],
+                    answer: 1
+                },
+                {
+                    question: "Quelle année a été diffusé le premier épisode de 'Dragon Ball'?",
+                    options: ["1984", "1986", "1989", "1992"],
+                    answer: 1
+                },
+                {
+                    question: "Qui est le réalisateur de 'Akira'?",
+                    options: ["Mamoru Oshii", "Katsuhiro Otomo", "Satoshi Kon", "Isao Takahata"],
+                    answer: 1
+                },
+                {
+                    question: "Quel est le nom du vaisseau spatial dans 'Cowboy Bebop'?",
+                    options: ["Swordfish", "Bebop", "Outlaw Star", "Red Tail"],
+                    answer: 1
+                },
+                {
+                    question: "Quel est le vrai nom de Sailor Moon?",
+                    options: ["Rei Hino", "Usagi Tsukino", "Ami Mizuno", "Minako Aino"],
+                    answer: 1
+                }
+            ],
+            movies: [
+                {
+                    question: "Quel studio a produit 'Le Voyage de Chihiro'?",
+                    options: ["Toei Animation", "Madhouse", "Studio Ghibli", "Gainax"],
+                    answer: 2
+                },
+                {
+                    question: "Qui a réalisé 'Your Name'?",
+                    options: ["Makoto Shinkai", "Mamoru Hosoda", "Hayao Miyazaki", "Satoshi Kon"],
+                    answer: 0
+                },
+                {
+                    question: "Quelle est l'année de sortie de 'Ghost in the Shell'?",
+                    options: ["1988", "1995", "2001", "2004"],
+                    answer: 1
+                },
+                {
+                    question: "Quel est le nom du personnage principal de 'Princesse Mononoké'?",
+                    options: ["Ashitaka", "San", "Lady Eboshi", "Jigo"],
+                    answer: 0
+                },
+                {
+                    question: "Quel film d'animation japonais a remporté l'Oscar du meilleur film d'animation en 2003?",
+                    options: ["Spirited Away", "Princess Mononoke", "Howl's Moving Castle", "My Neighbor Totoro"],
+                    answer: 0
+                }
+            ]
+        };
+
+        let currentQuiz = null;
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let questions = [];
+
+        // Fonction pour démarrer un quiz
+        function startQuiz(category) {
+            currentQuiz = category;
+            questions = quizData[category];
+            currentQuestionIndex = 0;
+            score = 0;
+            
+            // Afficher l'écran de quiz et masquer les autres
+            document.getElementById('home-screen').style.display = 'none';
+            document.getElementById('quiz-screen').style.display = 'block';
+            document.getElementById('result-screen').style.display = 'none';
+            
+            // Initialiser le quiz
+            document.getElementById('quiz-title').textContent = `Quiz - ${category.charAt(0).toUpperCase() + category.slice(1)}`;
+            document.getElementById('total-questions').textContent = questions.length;
+            
+            // Afficher la première question
+            displayQuestion();
+        }
+
+        // Fonction pour afficher une question
+        function displayQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById('current-question').textContent = currentQuestionIndex + 1;
+            document.getElementById('question-text').textContent = question.question;
+            
+            // Créer les options
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.onclick = () => checkAnswer(index);
+                optionsContainer.appendChild(button);
+            });
+            
+            // Cacher le feedback
+            document.getElementById('feedback').style.display = 'none';
+        }
+
+        // Fonction pour vérifier la réponse
+        function checkAnswer(selectedOption) {
+            const question = questions[currentQuestionIndex];
+            const isCorrect = selectedOption === question.answer;
+            
+            if (isCorrect) {
+                score++;
+            }
+            
+            // Afficher le feedback
+            const feedback = document.getElementById('feedback');
+            const feedbackText = document.getElementById('feedback-text');
+            
+            feedback.style.display = 'block';
+            feedbackText.textContent = isCorrect ? 
+                'Correct! Bonne réponse!' : 
+                `Incorrect. La bonne réponse était: ${question.options[question.answer]}`;
+            
+            // Désactiver les boutons d'options
+            const optionButtons = document.querySelectorAll('#options-container button');
+            optionButtons.forEach(button => {
+                button.disabled = true;
+            });
+        }
+
+        // Fonction pour passer à la question suivante
+        function nextQuestion() {
+            currentQuestionIndex++;
+            
+            if (currentQuestionIndex < questions.length) {
+                displayQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        // Fonction pour afficher les résultats
+        function showResults() {
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('result-screen').style.display = 'block';
+            
+            document.getElementById('score').textContent = score;
+            document.getElementById('max-score').textContent = questions.length;
+            
+            // Afficher un message en fonction du score
+            const resultMessage = document.getElementById('result-message');
+            const percentage = (score / questions.length) * 100;
+            
+            if (percentage >= 80) {
+                resultMessage.textContent = "Excellent! Vous êtes un vrai fan d'animés!";
+            } else if (percentage >= 60) {
+                resultMessage.textContent = "Bien joué! Vous avez de bonnes connaissances!";
+            } else if (percentage >= 40) {
+                resultMessage.textContent = "Pas mal! Mais il y a encore des animés à découvrir!";
+            } else {
+                resultMessage.textContent = "Vous avez besoin de regarder plus d'animés!";
+            }
+        }
+
+        // Fonction pour retourner à l'écran d'accueil
+        function returnToHome() {
+            document.getElementById('home-screen').style.display = 'block';
+            document.getElementById('result-screen').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
