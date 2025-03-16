@@ -260,7 +260,7 @@ footer {
 @media (min-width: 768px) {
     #options-container {
 
-        
+
         grid-template-columns: 1fr 1fr;
     }
 }
@@ -284,3 +284,48 @@ footer {
         width: 150px;
     }
 }
+
+        /* Styles pour les conteneurs de publicités */
+        .ad-container {
+            margin: 20px 0;
+            text-align: center;
+            min-height: 90px;
+            background-color: rgba(245, 245, 245, 0.7);
+            padding: 10px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            clear: both;
+        }
+
+        /* Étiquette "Publicité" pour la transparence */
+        .ad-container::before {
+            content: "Publicité";
+            display: block;
+            font-size: 0.7rem;
+            color: #999;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        /* Styles spécifiques pour différents formats */
+        .ad-banner {
+            min-height: 90px;
+            margin: 10px 0;
+        }
+
+        .ad-rectangle {
+            margin: 25px auto;
+            max-width: 300px;
+        }
+
+        .ad-interstitial {
+            margin: 20px auto;
+            max-width: 728px;
+        }
+
+        /* Cacher les publicités par défaut sur l'écran mobile */
+        @media (max-width: 600px) {
+            .ad-interstitial {
+                max-width: 320px;
+            }
+        }

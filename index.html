@@ -5,15 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>AniméQuiz - Testez vos connaissances sur les animés</title>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3138264235261255"
+     crossorigin="anonymous"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-XXXXXXXXXXXXXX",
+            enable_page_level_ads: true
+        });
+    </script>
 </head>
 <body>
-
-    
     <div class="container">
         <header>
             <h1>AniméQuiz</h1>
             <p>Testez vos connaissances sur les animés japonais</p>
         </header>
+        
+        <!-- Bannière publicitaire en haut du site -->
+        <div class="ad-container ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-VOTRE_ID_CLIENT"
+                 data-ad-slot="VOTRE_ID_EMPLACEMENT_BANNIERE"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
         
         <main>
             <!-- Écran d'accueil -->
@@ -26,6 +47,17 @@
                     <li><button onclick="startQuiz('classics')">Classiques</button></li>
                     <li><button onclick="startQuiz('movies')">Films d'animation</button></li>
                 </ul>
+                
+                <!-- Publicité rectangulaire sous les catégories -->
+                <div class="ad-container ad-rectangle">
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:300px;height:250px"
+                         data-ad-client="ca-pub-VOTRE_ID_CLIENT"
+                         data-ad-slot="VOTRE_ID_EMPLACEMENT_RECTANGLE"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
             </section>
             
             <!-- Écran de quiz -->
@@ -35,11 +67,37 @@
                     <div id="quiz-progress">Question <span id="current-question">1</span>/<span id="total-questions">10</span></div>
                 </div>
                 
+                <!-- Publicité avant la question -->
+                <div id="ad-before-question" class="ad-container ad-responsive">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-VOTRE_ID_CLIENT"
+                         data-ad-slot="VOTRE_ID_EMPLACEMENT_AVANT_QUESTION"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                
                 <div id="question-container">
                     <h3 id="question-text">Question ici</h3>
                     <div id="options-container">
                         <!-- Les options seront insérées ici -->
                     </div>
+                </div>
+                
+                <!-- Publicité entre question et feedback -->
+                <div id="ad-between-questions" class="ad-container ad-interstitial">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-VOTRE_ID_CLIENT"
+                         data-ad-slot="VOTRE_ID_EMPLACEMENT_ENTRE_QUESTIONS"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                 </div>
                 
                 <div id="feedback" style="display: none;">
@@ -52,10 +110,50 @@
             <section id="result-screen" style="display: none;">
                 <h2>Résultats</h2>
                 <p>Vous avez obtenu <span id="score">0</span> sur <span id="max-score">10</span></p>
+                
+                <!-- Publicité avant le message de résultat -->
+                <div class="ad-container ad-responsive">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-VOTRE_ID_CLIENT"
+                         data-ad-slot="VOTRE_ID_EMPLACEMENT_RESULTATS"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                
                 <div id="result-message"></div>
                 <button onclick="returnToHome()">Retour à l'accueil</button>
+                
+                <!-- Publicité après les résultats -->
+                <div class="ad-container ad-responsive">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-VOTRE_ID_CLIENT"
+                         data-ad-slot="VOTRE_ID_EMPLACEMENT_APRES_RESULTATS"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
             </section>
         </main>
+        
+        <!-- Publicité avant le pied de page -->
+        <div class="ad-container ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-VOTRE_ID_CLIENT"
+                 data-ad-slot="VOTRE_ID_EMPLACEMENT_PIED_PAGE"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
         
         <footer>
             <p>AniméQuiz &copy; 2025</p>
@@ -63,8 +161,8 @@
     </div>
 
     <script>
-        // Base de données des questions
-        const quizData = {
+       // Base de données des questions
+       const quizData = {
             shonen: [
                 {
                     question: "Quel est le nom du protagoniste de 'One Piece'?",
@@ -219,6 +317,14 @@
             
             // Cacher le feedback
             document.getElementById('feedback').style.display = 'none';
+            
+            // Gestion des publicités interstitielles
+            // On affiche une publicité toutes les 2 questions (sauf pour la première)
+            if (currentQuestionIndex > 0 && currentQuestionIndex % 2 === 0) {
+                document.getElementById('ad-between-questions').style.display = 'block';
+            } else {
+                document.getElementById('ad-between-questions').style.display = 'none';
+            }
         }
 
         // Fonction pour vérifier la réponse
@@ -244,6 +350,9 @@
             optionButtons.forEach(button => {
                 button.disabled = true;
             });
+            
+            // Afficher la publicité après la réponse
+            document.getElementById('ad-between-questions').style.display = 'block';
         }
 
         // Fonction pour passer à la question suivante
@@ -278,6 +387,13 @@
             } else {
                 resultMessage.textContent = "Vous avez besoin de regarder plus d'animés!";
             }
+            
+            // Actualiser toutes les publicités à la fin du quiz
+            try {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            } catch (e) {
+                console.log('Erreur de chargement des publicités:', e);
+            }
         }
 
         // Fonction pour retourner à l'écran d'accueil
@@ -285,6 +401,17 @@
             document.getElementById('home-screen').style.display = 'block';
             document.getElementById('result-screen').style.display = 'none';
         }
+
+        // Fonction pour recharger les publicités (à utiliser si nécessaire)
+        function refreshAds() {
+            try {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            } catch (e) {
+                console.log('Erreur de chargement des publicités:', e);
+            }
+        }
     </script>
+
+    
 </body>
 </html>
