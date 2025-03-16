@@ -885,6 +885,198 @@ document.addEventListener('DOMContentLoaded', function() {
         defaultDifficultyBtn.classList.add('active');
     }
 });
+
+// Ajoutez ce code à votre script JavaScript existant
+
+// Fonctions pour gérer l'historique et permettre la navigation avec les flèches du navigateur
+function setupHistoryNavigation() {
+    // Mémoriser l'état initial (page d'accueil)
+    const initialState = { page: 'home' };
+    history.replaceState(initialState, '', window.location.href);
+
+    // Gérer les événements de changement d'état (navigation)
+    window.addEventListener('popstate', function(event) {
+        if (event.state) {
+            handleHistoryNavigation(event.state);
+        }
+    });
+}
+
+// Gérer la navigation en fonction de l'état
+function handleHistoryNavigation(state) {
+    // Cacher tous les écrans d'abord
+    document.getElementById('home-screen').style.display = 'none';
+    document.getElementById('quiz-screen').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'none';
+    
+    // Afficher l'écran approprié
+    switch(state.page) {
+        case 'home':
+            document.getElementById('home-screen').style.display = 'block';
+            break;
+        case 'quiz':
+            if (state.quizId && state.questionIndex !== undefined) {
+                // Restaurer l'état du quiz
+                if (currentQuiz !== state.quizId) {
+                    // Si le quiz a changé, on le redémarre
+                    startQuiz(state.quizId);
+                } else {
+                    // Sinon on revient à la question précédente
+                    document.getElementById('quiz-screen').style.display = 'block';
+                    currentQuestion = state.questionIndex;
+                    showQuestion();
+                }
+            } else {
+                // Si les informations du quiz sont manquantes, revenir à l'accueil
+                document.getElementById('home-screen').style.display = 'block';
+            }
+            break;
+        case 'results':
+            if (state.quizId && score !== undefined) {
+                document.getElementById('result-screen').style.display = 'block';
+            } else {
+                document.getElementById('home-screen').style.display = 'block';
+            }
+            break;
+        default:
+            document.getElementById('home-screen').style.display = 'block';
+    }
+}
+
+// Modifier la fonction startQuiz pour gérer l'historique
+function startQuiz(quizId) {
+    // Vérifier si c'est une catégorie principale
+    if (quizId === 'shonen' || quizId === 'seinen' || quizId === 'classics' || quizId === 'movies') {
+        const success = startCategoryQuiz(quizId);
+        if (!success) return false;
+    } else {
+        // Vérifier si le quiz existe
+        if (!quizDatabase[quizId] || !quizDatabase[quizId][difficulty]) {
+            alert("Ce quiz n'est pas encore disponible à ce niveau de difficulté. Essayez-en un autre ou changez de niveau.");
+            return false;
+        }
+        
+        // Initialiser le quiz
+        currentQuiz = quizId;
+        currentQuestion = 0;
+        score = 0;
+        
+        // Récupérer les questions pour ce quiz et cette difficulté
+        questions = shuffleArray([...quizDatabase[quizId][difficulty]]);
+        
+        // Limiter à 10 questions
+        if (questions.length > 10) {
+            questions = questions.slice(0, 10);
+        }
+        
+        // Mettre à jour le titre du quiz
+        document.getElementById('quiz-title').textContent = getQuizTitle(quizId);
+        document.getElementById('total-questions').textContent = questions.length;
+        
+        // Cacher l'écran d'accueil et montrer l'écran de quiz
+        document.getElementById('home-screen').style.display = 'none';
+        document.getElementById('quiz-screen').style.display = 'block';
+        document.getElementById('result-screen').style.display = 'none';
+        
+        // Afficher la première question
+        showQuestion();
+    }
+    
+    // Ajouter un nouvel état dans l'historique
+    const quizState = { 
+        page: 'quiz', 
+        quizId: currentQuiz, 
+        questionIndex: currentQuestion 
+    };
+    history.pushState(quizState, '', '#quiz/' + currentQuiz);
+    
+    return true;
+}
+
+// Modifier la fonction nextQuestion pour gérer l'historique
+function nextQuestion() {
+    currentQuestion++;
+    
+    // Cacher la publicité interstitielle
+    document.getElementById('ad-between-questions').style.display = 'none';
+    
+    // Vérifier si c'est la fin du quiz
+    if (currentQuestion >= questions.length) {
+        showResults();
+        
+        // Ajouter un nouvel état dans l'historique pour les résultats
+        const resultsState = { 
+            page: 'results', 
+            quizId: currentQuiz, 
+            finalScore: score 
+        };
+        history.pushState(resultsState, '', '#results/' + currentQuiz);
+    } else {
+        showQuestion();
+        
+        // Mettre à jour l'état dans l'historique
+        const quizState = { 
+            page: 'quiz', 
+            quizId: currentQuiz, 
+            questionIndex: currentQuestion 
+        };
+        history.pushState(quizState, '', '#quiz/' + currentQuiz + '/' + currentQuestion);
+    }
+}
+
+// Modifier la fonction returnToHome pour gérer l'historique
+function returnToHome() {
+    document.getElementById('home-screen').style.display = 'block';
+    document.getElementById('quiz-screen').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'none';
+    
+    // Ajouter un nouvel état dans l'historique pour l'accueil
+    const homeState = { page: 'home' };
+    history.pushState(homeState, '', window.location.href.split('#')[0]);
+}
+
+// Initialiser la gestion de l'historique au chargement de la page
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialiser l'interface
+    document.getElementById('home-screen').style.display = 'block';
+    document.getElementById('quiz-screen').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'none';
+    
+    // Charger les publicités initiales
+    adsense();
+    
+    // Marquer la difficulté par défaut comme active
+    const defaultDifficultyBtn = document.querySelector(`.difficulty-btn.${difficulty}`);
+    if (defaultDifficultyBtn) {
+        defaultDifficultyBtn.classList.add('active');
+    }
+    
+    // Initialiser la gestion de l'historique
+    setupHistoryNavigation();
+    
+    // Vérifier si l'URL contient un fragment et naviguer en conséquence
+    const hash = window.location.hash;
+    if (hash) {
+        const parts = hash.substring(1).split('/');
+        if (parts.length >= 2) {
+            const page = parts[0];
+            const quizId = parts[1];
+            
+            if (page === 'quiz' && quizId) {
+                startQuiz(quizId);
+                
+                // Si une question spécifique est indiquée
+                if (parts.length >= 3) {
+                    const questionIndex = parseInt(parts[2]);
+                    if (!isNaN(questionIndex) && questionIndex < questions.length) {
+                        currentQuestion = questionIndex;
+                        showQuestion();
+                    }
+                }
+            }
+        }
+    }
+});
         
         // Cacher l'écran d'accueil et montrer l'écran de quiz
     </script>
