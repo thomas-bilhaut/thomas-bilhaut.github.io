@@ -259,6 +259,7 @@ footer {
 /* Médias queries pour la responsivité */
 @media (min-width: 768px) {
     #options-container {
+
         
         grid-template-columns: 1fr 1fr;
     }
