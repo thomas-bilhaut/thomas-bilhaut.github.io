@@ -41,13 +41,122 @@
             <!-- Écran d'accueil -->
             <section id="home-screen">
                 <h2>Bienvenue sur AniméQuiz!</h2>
-                <p>Choisissez une catégorie:</p>
-                <ul id="categories">
-                    <li><button onclick="startQuiz('shonen')">Shonen</button></li>
-                    <li><button onclick="startQuiz('seinen')">Seinen</button></li>
-                    <li><button onclick="startQuiz('classics')">Classiques</button></li>
-                    <li><button onclick="startQuiz('movies')">Films d'animation</button></li>
-                </ul>
+                <p>Choisissez une catégorie ou un quiz spécifique:</p>
+                
+                <!-- Catégories principales -->
+                <div class="main-categories">
+                    <h3>Catégories principales</h3>
+                    <ul id="categories">
+                        <li><button onclick="startQuiz('shonen')">Shonen</button></li>
+                        <li><button onclick="startQuiz('seinen')">Seinen</button></li>
+                        <li><button onclick="startQuiz('classics')">Classiques</button></li>
+                        <li><button onclick="startQuiz('movies')">Films d'animation</button></li>
+                    </ul>
+                </div>
+                
+                <!-- Liste étendue des quiz -->
+                <div class="expanded-quizzes">
+                    <h3>Quiz par série</h3>
+                    <div class="quiz-grid">
+                        <!-- Première colonne -->
+                        <div class="quiz-column">
+                            <h4>Shonen populaires</h4>
+                            <ul>
+                                <li><button onclick="startQuiz('one_piece')">One Piece</button></li>
+                                <li><button onclick="startQuiz('naruto')">Naruto & Boruto</button></li>
+                                <li><button onclick="startQuiz('dragon_ball')">Dragon Ball</button></li>
+                                <li><button onclick="startQuiz('my_hero_academia')">My Hero Academia</button></li>
+                                <li><button onclick="startQuiz('demon_slayer')">Demon Slayer</button></li>
+                                <li><button onclick="startQuiz('jujutsu_kaisen')">Jujutsu Kaisen</button></li>
+                                <li><button onclick="startQuiz('attack_on_titan')">L'Attaque des Titans</button></li>
+                            </ul>
+                            
+                            <h4>Sport & Compétition</h4>
+                            <ul>
+                                <li><button onclick="startQuiz('haikyuu')">Haikyū!!</button></li>
+                                <li><button onclick="startQuiz('kuroko')">Kuroko's Basketball</button></li>
+                                <li><button onclick="startQuiz('yuri_on_ice')">Yuri!!! on Ice</button></li>
+                                <li><button onclick="startQuiz('food_wars')">Food Wars</button></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Deuxième colonne -->
+                        <div class="quiz-column">
+                            <h4>Seinen & Psychologiques</h4>
+                            <ul>
+                                <li><button onclick="startQuiz('death_note')">Death Note</button></li>
+                                <li><button onclick="startQuiz('monster')">Monster</button></li>
+                                <li><button onclick="startQuiz('psycho_pass')">Psycho-Pass</button></li>
+                                <li><button onclick="startQuiz('tokyo_ghoul')">Tokyo Ghoul</button></li>
+                                <li><button onclick="startQuiz('parasyte')">Parasyte</button></li>
+                                <li><button onclick="startQuiz('vinland_saga')">Vinland Saga</button></li>
+                                <li><button onclick="startQuiz('berserk')">Berserk</button></li>
+                            </ul>
+                            
+                            <h4>Fantasy & Isekai</h4>
+                            <ul>
+                                <li><button onclick="startQuiz('sword_art')">Sword Art Online</button></li>
+                                <li><button onclick="startQuiz('konosuba')">KonoSuba</button></li>
+                                <li><button onclick="startQuiz('re_zero')">Re:Zero</button></li>
+                                <li><button onclick="startQuiz('overlord')">Overlord</button></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Troisième colonne -->
+                        <div class="quiz-column">
+                            <h4>Studio Ghibli</h4>
+                            <ul>
+                                <li><button onclick="startQuiz('spirited_away')">Le Voyage de Chihiro</button></li>
+                                <li><button onclick="startQuiz('mononoke')">Princesse Mononoké</button></li>
+                                <li><button onclick="startQuiz('totoro')">Mon Voisin Totoro</button></li>
+                                <li><button onclick="startQuiz('howls_castle')">Le Château Ambulant</button></li>
+                                <li><button onclick="startQuiz('nausicaa')">Nausicaä</button></li>
+                            </ul>
+                            
+                            <h4>Romance & Tranches de vie</h4>
+                            <ul>
+                                <li><button onclick="startQuiz('your_name')">Your Name</button></li>
+                                <li><button onclick="startQuiz('silent_voice')">A Silent Voice</button></li>
+                                <li><button onclick="startQuiz('clannad')">Clannad</button></li>
+                                <li><button onclick="startQuiz('fruits_basket')">Fruits Basket</button></li>
+                                <li><button onclick="startQuiz('kaguya_sama')">Kaguya-sama</button></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Quatrième colonne -->
+                        <div class="quiz-column">
+                            <h4>Classiques & Cultes</h4>
+                            <ul>
+                                <li><button onclick="startQuiz('cowboy_bebop')">Cowboy Bebop</button></li>
+                                <li><button onclick="startQuiz('evangelion')">Evangelion</button></li>
+                                <li><button onclick="startQuiz('fma_brotherhood')">Fullmetal Alchemist</button></li>
+                                <li><button onclick="startQuiz('ghibli')">Studio Ghibli</button></li>
+                                <li><button onclick="startQuiz('sailor_moon')">Sailor Moon</button></li>
+                                <li><button onclick="startQuiz('ghost_shell')">Ghost in the Shell</button></li>
+                                <li><button onclick="startQuiz('akira')">Akira</button></li>
+                            </ul>
+                            
+                            <h4>Quiz spéciaux</h4>
+                            <ul>
+                                <li><button onclick="startQuiz('opening_songs')">Openings</button></li>
+                                <li><button onclick="startQuiz('anime_food')">Cuisine dans les animés</button></li>
+                                <li><button onclick="startQuiz('mecha')">Mecha</button></li>
+                                <li><button onclick="startQuiz('anime_quotes')">Citations célèbres</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Niveaux de difficulté -->
+                <div class="difficulty-section">
+                    <h3>Niveaux de difficulté</h3>
+                    <div class="difficulty-buttons">
+                        <button onclick="setDifficulty('easy')" class="difficulty-btn easy">Débutant</button>
+                        <button onclick="setDifficulty('medium')" class="difficulty-btn medium">Intermédiaire</button>
+                        <button onclick="setDifficulty('hard')" class="difficulty-btn hard">Expert</button>
+                        <button onclick="setDifficulty('otaku')" class="difficulty-btn otaku">Mode Otaku</button>
+                    </div>
+                </div>
                 
                 <!-- Publicité rectangulaire sous les catégories -->
                 <div class="ad-container ad-rectangle">
@@ -162,255 +271,622 @@
     </div>
 
     <script>
-       // Base de données des questions
-       const quizData = {
-            shonen: [
-                {
-                    question: "Quel est le nom du protagoniste de 'One Piece'?",
-                    options: ["Luffy", "Naruto", "Goku", "Ichigo"],
-                    answer: 0
-                },
-                {
-                    question: "Quelle est la technique signature de Naruto?",
-                    options: ["Kamehameha", "Rasengan", "Chidori", "Bankai"],
-                    answer: 1
-                },
-                {
-                    question: "Dans 'Demon Slayer', quelle est la couleur du sabre de Tanjiro?",
-                    options: ["Bleu", "Vert", "Rouge", "Noir"],
-                    answer: 2
-                },
-                {
-                    question: "Quel est le but principal de Gon dans 'Hunter x Hunter'?",
-                    options: ["Devenir le plus fort", "Trouver le One Piece", "Retrouver son père", "Devenir Hokage"],
-                    answer: 2
-                },
-                {
-                    question: "Quelle est la spécialité culinaire de Soma dans 'Food Wars'?",
-                    options: ["Sushi", "Ramen", "Diner japonais", "Cuisine française"],
-                    answer: 2
-                }
-            ],
-            seinen: [
-                {
-                    question: "Quel est le nom du protagoniste de 'Berserk'?",
-                    options: ["Griffith", "Guts", "Casca", "Judeau"],
-                    answer: 1
-                },
-                {
-                    question: "Dans 'Tokyo Ghoul', quelle est la particularité des goules?",
-                    options: ["Elles ne peuvent manger que des humains", "Elles sont immortelles", "Elles peuvent voler", "Elles détestent le café"],
-                    answer: 0
-                },
-                {
-                    question: "Qui est l'antagoniste principal dans 'Monster'?",
-                    options: ["Dr. Tenma", "Anna Liebert", "Johan Liebert", "Inspector Lunge"],
-                    answer: 2
-                },
-                {
-                    question: "Quel est le thème principal de 'Vinland Saga'?",
-                    options: ["Les ninjas", "Les samouraïs", "Les vikings", "Les extraterrestres"],
-                    answer: 2
-                },
-                {
-                    question: "Dans 'Parasyte', quelle partie du corps de Shinichi est infectée?",
-                    options: ["Sa tête", "Son bras droit", "Son cœur", "Sa jambe gauche"],
-                    answer: 1
-                }
-            ],
-            classics: [
-                {
-                    question: "Qui a créé 'Astro Boy'?",
-                    options: ["Hayao Miyazaki", "Osamu Tezuka", "Akira Toriyama", "Hideaki Anno"],
-                    answer: 1
-                },
-                {
-                    question: "Quelle année a été diffusé le premier épisode de 'Dragon Ball'?",
-                    options: ["1984", "1986", "1989", "1992"],
-                    answer: 1
-                },
-                {
-                    question: "Qui est le réalisateur de 'Akira'?",
-                    options: ["Mamoru Oshii", "Katsuhiro Otomo", "Satoshi Kon", "Isao Takahata"],
-                    answer: 1
-                },
-                {
-                    question: "Quel est le nom du vaisseau spatial dans 'Cowboy Bebop'?",
-                    options: ["Swordfish", "Bebop", "Outlaw Star", "Red Tail"],
-                    answer: 1
-                },
-                {
-                    question: "Quel est le vrai nom de Sailor Moon?",
-                    options: ["Rei Hino", "Usagi Tsukino", "Ami Mizuno", "Minako Aino"],
-                    answer: 1
-                }
-            ],
-            movies: [
-                {
-                    question: "Quel studio a produit 'Le Voyage de Chihiro'?",
-                    options: ["Toei Animation", "Madhouse", "Studio Ghibli", "Gainax"],
-                    answer: 2
-                },
-                {
-                    question: "Qui a réalisé 'Your Name'?",
-                    options: ["Makoto Shinkai", "Mamoru Hosoda", "Hayao Miyazaki", "Satoshi Kon"],
-                    answer: 0
-                },
-                {
-                    question: "Quelle est l'année de sortie de 'Ghost in the Shell'?",
-                    options: ["1988", "1995", "2001", "2004"],
-                    answer: 1
-                },
-                {
-                    question: "Quel est le nom du personnage principal de 'Princesse Mononoké'?",
-                    options: ["Ashitaka", "San", "Lady Eboshi", "Jigo"],
-                    answer: 0
-                },
-                {
-                    question: "Quel film d'animation japonais a remporté l'Oscar du meilleur film d'animation en 2003?",
-                    options: ["Spirited Away", "Princess Mononoke", "Howl's Moving Castle", "My Neighbor Totoro"],
-                    answer: 0
-                }
-            ]
-        };
+      // Variables globales
+let currentQuiz = null;
+let currentQuestion = 0;
+let score = 0;
+let questions = [];
+let difficulty = 'medium'; // Difficulté par défaut
 
-        let currentQuiz = null;
-        let currentQuestionIndex = 0;
-        let score = 0;
-        let questions = [];
+// Base de données des questions (un petit échantillon pour l'exemple)
+const quizDatabase = {
+    // Questions pour One Piece
+    one_piece: {
+        easy: [
+            {
+                question: "Quel est le nom du capitaine de l'équipage du Chapeau de Paille ?",
+                options: ["Monkey D. Luffy", "Roronoa Zoro", "Sanji", "Usopp"],
+                answer: 0,
+                explanation: "Monkey D. Luffy est le capitaine de l'équipage du Chapeau de Paille."
+            },
+            {
+                question: "Quel est le rêve de Luffy ?",
+                options: ["Trouver le One Piece", "Devenir le meilleur sabreur", "Trouver All Blue", "Devenir un brave guerrier des mers"],
+                answer: 0,
+                explanation: "Le rêve de Luffy est de trouver le One Piece et de devenir le Roi des Pirates."
+            },
+            // Ajoutez d'autres questions faciles ici
+        ],
+        medium: [
+            {
+                question: "Quel est le nom du cuisinier de l'équipage du Chapeau de Paille ?",
+                options: ["Usopp", "Sanji", "Brook", "Franky"],
+                answer: 1,
+                explanation: "Sanji est le cuisinier de l'équipage du Chapeau de Paille."
+            },
+            {
+                question: "Quel fruit du démon Luffy a-t-il mangé ?",
+                options: ["Gomu Gomu no Mi", "Mera Mera no Mi", "Hito Hito no Mi", "Bara Bara no Mi"],
+                answer: 0,
+                explanation: "Luffy a mangé le Gomu Gomu no Mi (Fruit du Caoutchoutier) qui a fait de lui un homme-caoutchouc."
+            },
+            // Ajoutez d'autres questions de difficulté moyenne ici
+        ],
+        hard: [
+            {
+                question: "Qui était le Roi des Pirates avant l'ère actuelle ?",
+                options: ["Barbe Blanche", "Rocks D. Xebec", "Gol D. Roger", "Monkey D. Dragon"],
+                answer: 2,
+                explanation: "Gol D. Roger était connu comme le Roi des Pirates avant l'ère actuelle."
+            },
+            {
+                question: "Quel est le vrai nom de Barbe Noire ?",
+                options: ["Marshall D. Teach", "Edward Weevil", "Gecko Moria", "Dracule Mihawk"],
+                answer: 0,
+                explanation: "Le vrai nom de Barbe Noire est Marshall D. Teach."
+            },
+            // Ajoutez d'autres questions difficiles ici
+        ],
+        otaku: [
+            {
+                question: "Quel est le numéro de l'épisode où Ace meurt ?",
+                options: ["Episode 483", "Episode 574", "Episode 489", "Episode 405"],
+                answer: 0,
+                explanation: "Ace meurt dans l'épisode 483 de l'anime One Piece."
+            },
+            {
+                question: "Quel est le vrai nom de Jewelry Bonney ?",
+                options: ["Nefertari Bonney", "Portgas D. Bonney", "Monkey D. Bonney", "Sorbet"],
+                answer: 3,
+                explanation: "Le vrai nom de Jewelry Bonney est révélé comme étant Sorbet."
+            },
+            // Ajoutez d'autres questions de niveau otaku ici
+        ]
+    },
+    
+    // Questions pour Naruto
+    naruto: {
+        // Structure similaire pour Naruto
+    },
+    
+    // Exemple pour Dragon Ball
+    dragon_ball: {
+        easy: [
+            {
+                question: "Quel est le personnage principal de Dragon Ball ?",
+                options: ["Vegeta", "Goku", "Gohan", "Piccolo"],
+                answer: 1,
+                explanation: "Son Goku (ou Kakarot) est le personnage principal de Dragon Ball."
+            },
+            // Ajoutez d'autres questions
+        ],
+        medium: [
+            {
+                question: "De quelle planète viennent originellement les Saiyans ?",
+                options: ["Terre", "Namek", "Vegeta", "Yardrat"],
+                answer: 2,
+                explanation: "Les Saiyans viennent de la planète Vegeta, qui a été détruite par Freezer."
+            },
+            // Ajoutez d'autres questions
+        ],
+        // Niveaux hard et otaku
+    },
+    
+    // Ajoutez des questions pour les autres catégories et séries...
+};
 
-        // Fonction pour démarrer un quiz
-        function startQuiz(category) {
-            currentQuiz = category;
-            questions = quizData[category];
-            currentQuestionIndex = 0;
-            score = 0;
-            
-            // Afficher l'écran de quiz et masquer les autres
-            document.getElementById('home-screen').style.display = 'none';
-            document.getElementById('quiz-screen').style.display = 'block';
-            document.getElementById('result-screen').style.display = 'none';
-            
-            // Initialiser le quiz
-            document.getElementById('quiz-title').textContent = `Quiz - ${category.charAt(0).toUpperCase() + category.slice(1)}`;
-            document.getElementById('total-questions').textContent = questions.length;
-            
-            // Afficher la première question
-            displayQuestion();
-        }
+// Fonction d'initialisation
+document.addEventListener('DOMContentLoaded', function() {
+    // Rien à faire ici pour l'instant, l'écran d'accueil est déjà affiché
+});
 
-        // Fonction pour afficher une question
-        function displayQuestion() {
-            const question = questions[currentQuestionIndex];
-            document.getElementById('current-question').textContent = currentQuestionIndex + 1;
-            document.getElementById('question-text').textContent = question.question;
-            
-            // Créer les options
-            const optionsContainer = document.getElementById('options-container');
-            optionsContainer.innerHTML = '';
-            
-            question.options.forEach((option, index) => {
-                const button = document.createElement('button');
-                button.textContent = option;
-                button.onclick = () => checkAnswer(index);
-                optionsContainer.appendChild(button);
-            });
-            
-            // Cacher le feedback
-            document.getElementById('feedback').style.display = 'none';
-            
-            // Gestion des publicités interstitielles
-            // On affiche une publicité toutes les 2 questions (sauf pour la première)
-            if (currentQuestionIndex > 0 && currentQuestionIndex % 2 === 0) {
-                document.getElementById('ad-between-questions').style.display = 'block';
-            } else {
-                document.getElementById('ad-between-questions').style.display = 'none';
+// Définir la difficulté
+function setDifficulty(level) {
+    difficulty = level;
+    
+    // Feedback visuel pour l'utilisateur
+    const buttons = document.querySelectorAll('.difficulty-btn');
+    buttons.forEach(button => button.classList.remove('active'));
+    
+    const activeButton = document.querySelector(`.difficulty-btn.${level}`);
+    if (activeButton) {
+        activeButton.classList.add('active');
+    }
+    
+    alert(`Difficulté définie: ${getDifficultyName(level)}`);
+}
+
+// Obtenir le nom de la difficulté
+function getDifficultyName(level) {
+    switch(level) {
+        case 'easy': return 'Débutant';
+        case 'medium': return 'Intermédiaire';
+        case 'hard': return 'Expert';
+        case 'otaku': return 'Mode Otaku';
+        default: return 'Intermédiaire';
+    }
+}
+
+// Démarrer un quiz
+function startQuiz(quizId) {
+    currentQuiz = quizId;
+    currentQuestion = 0;
+    score = 0;
+    
+    // Vérifier si le quiz existe
+    if (!quizDatabase[quizId] || !quizDatabase[quizId][difficulty]) {
+        alert("Ce quiz n'est pas encore disponible à ce niveau de difficulté. Essayez-en un autre ou changez de niveau.");
+        return;
+    }
+    
+    // Récupérer les questions pour ce quiz et cette difficulté
+    questions = shuffleArray([...quizDatabase[quizId][difficulty]]);
+    
+    // Limiter à 10 questions
+    if (questions.length > 10) {
+        questions = questions.slice(0, 10);
+    }
+    
+    // Mettre à jour le titre du quiz
+    document.getElementById('quiz-title').textContent = getQuizTitle(quizId);
+    document.getElementById('total-questions').textContent = questions.length;
+    
+    // Cacher l'écran d'accueil et montrer l'écran de quiz
+    document.getElementById('home-screen').style.display = 'none';
+    document.getElementById('quiz-screen').style.display = 'block';
+    document.getElementById('result-screen').style.display = 'none';
+    
+    // Afficher la première question
+    showQuestion();
+}
+
+// Obtenir le titre du quiz
+function getQuizTitle(quizId) {
+    const titles = {
+        one_piece: "Quiz One Piece",
+        naruto: "Quiz Naruto & Boruto",
+        dragon_ball: "Quiz Dragon Ball",
+        // Ajoutez d'autres titres...
+        shonen: "Quiz Shonen",
+        seinen: "Quiz Seinen",
+        classics: "Quiz Classiques",
+        movies: "Quiz Films d'animation"
+    };
+    
+    return titles[quizId] || "AniméQuiz";
+}
+
+// Afficher une question
+function showQuestion() {
+    // Cacher le feedback de la question précédente
+    document.getElementById('feedback').style.display = 'none';
+    
+    const questionData = questions[currentQuestion];
+    document.getElementById('current-question').textContent = currentQuestion + 1;
+    document.getElementById('question-text').textContent = questionData.question;
+    
+    // Créer les options
+    const optionsContainer = document.getElementById('options-container');
+    optionsContainer.innerHTML = '';
+    
+    questionData.options.forEach((option, index) => {
+        const button = document.createElement('button');
+        button.textContent = option;
+        button.className = 'option-btn';
+        button.onclick = function() { checkAnswer(index); };
+        optionsContainer.appendChild(button);
+    });
+}
+
+// Vérifier la réponse
+function checkAnswer(selectedIndex) {
+    const questionData = questions[currentQuestion];
+    const isCorrect = selectedIndex === questionData.answer;
+    
+    // Désactiver tous les boutons d'options
+    const optionButtons = document.querySelectorAll('.option-btn');
+    optionButtons.forEach(button => {
+        button.disabled = true;
+    });
+    
+    // Colorer les boutons
+    optionButtons[questionData.answer].classList.add('correct');
+    if (!isCorrect) {
+        optionButtons[selectedIndex].classList.add('incorrect');
+    }
+    
+    // Mettre à jour le score
+    if (isCorrect) {
+        score++;
+    }
+    
+    // Afficher le feedback
+    const feedbackText = document.getElementById('feedback-text');
+    if (isCorrect) {
+        feedbackText.textContent = "Correct! " + questionData.explanation;
+        feedbackText.className = 'correct-feedback';
+    } else {
+        feedbackText.textContent = "Incorrect. " + questionData.explanation;
+        feedbackText.className = 'incorrect-feedback';
+    }
+    
+    document.getElementById('feedback').style.display = 'block';
+    
+    // Afficher la publicité interstitielle entre les questions
+    document.getElementById('ad-between-questions').style.display = 'block';
+}
+
+// Passer à la question suivante
+function nextQuestion() {
+    currentQuestion++;
+    
+    // Cacher la publicité interstitielle
+    document.getElementById('ad-between-questions').style.display = 'none';
+    
+    // Vérifier si c'est la fin du quiz
+    if (currentQuestion >= questions.length) {
+        showResults();
+    } else {
+        showQuestion();
+    }
+}
+
+// Afficher les résultats
+function showResults() {
+    // Cacher l'écran de quiz et montrer l'écran de résultat
+    document.getElementById('quiz-screen').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'block';
+    
+    // Mettre à jour le score
+    document.getElementById('score').textContent = score;
+    document.getElementById('max-score').textContent = questions.length;
+    
+    // Afficher un message basé sur le score
+    const resultMessage = document.getElementById('result-message');
+    const percentage = (score / questions.length) * 100;
+    
+    let message;
+    if (percentage === 100) {
+        message = "Félicitations! Vous êtes un véritable otaku! Votre connaissance des animés est impressionnante!";
+    } else if (percentage >= 80) {
+        message = "Excellent résultat! Vous êtes un grand fan d'animés!";
+    } else if (percentage >= 60) {
+        message = "Bon travail! Vous avez de bonnes connaissances sur les animés!";
+    } else if (percentage >= 40) {
+        message = "Pas mal! Continuez à regarder plus d'animés pour améliorer votre score!";
+    } else {
+        message = "Il semble que vous débutez dans le monde des animés. Continuez à explorer!";
+    }
+    
+    resultMessage.textContent = message;
+}
+
+// Retourner à l'écran d'accueil
+function returnToHome() {
+    document.getElementById('home-screen').style.display = 'block';
+    document.getElementById('quiz-screen').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'none';
+}
+
+// Fonction utilitaire pour mélanger un tableau (algorithme de Fisher-Yates)
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+// Fonction pour créer des quiz de catégorie
+// Ces quiz regroupent des questions de plusieurs séries
+function createCategoryQuiz(categoryId) {
+    let allQuestions = [];
+    
+    // Définir quelles séries appartiennent à chaque catégorie
+    const categories = {
+        shonen: ['one_piece', 'naruto', 'dragon_ball', 'my_hero_academia', 'demon_slayer', 'jujutsu_kaisen', 'attack_on_titan'],
+        seinen: ['death_note', 'monster', 'psycho_pass', 'tokyo_ghoul', 'parasyte', 'vinland_saga', 'berserk'],
+        classics: ['cowboy_bebop', 'evangelion', 'fma_brotherhood', 'sailor_moon', 'ghost_shell', 'akira'],
+        movies: ['spirited_away', 'mononoke', 'totoro', 'howls_castle', 'nausicaa', 'your_name', 'silent_voice']
+    };
+    
+    // Si c'est une catégorie spéciale
+    if (categories[categoryId]) {
+        // Pour chaque série dans cette catégorie
+        categories[categoryId].forEach(seriesId => {
+            // Si cette série a des questions pour ce niveau de difficulté
+            if (quizDatabase[seriesId] && quizDatabase[seriesId][difficulty]) {
+                // Ajouter 2-3 questions de cette série
+                const seriesQuestions = shuffleArray([...quizDatabase[seriesId][difficulty]]);
+                allQuestions = allQuestions.concat(seriesQuestions.slice(0, 2));
             }
+        });
+        
+        // Si on a assez de questions
+        if (allQuestions.length >= 5) {
+            return shuffleArray(allQuestions).slice(0, 10);
         }
+    }
+    
+    // Si on n'a pas assez de questions ou si ce n'est pas une catégorie valide
+    return null;
+}
 
-        // Fonction pour vérifier la réponse
-        function checkAnswer(selectedOption) {
-            const question = questions[currentQuestionIndex];
-            const isCorrect = selectedOption === question.answer;
-            
-            if (isCorrect) {
-                score++;
-            }
-            
-            // Afficher le feedback
-            const feedback = document.getElementById('feedback');
-            const feedbackText = document.getElementById('feedback-text');
-            
-            feedback.style.display = 'block';
-            feedbackText.textContent = isCorrect ? 
-                'Correct! Bonne réponse!' : 
-                `Incorrect. La bonne réponse était: ${question.options[question.answer]}`;
-            
-            // Désactiver les boutons d'options
-            const optionButtons = document.querySelectorAll('#options-container button');
-            optionButtons.forEach(button => {
-                button.disabled = true;
-            });
-            
-            // Afficher la publicité après la réponse
-            document.getElementById('ad-between-questions').style.display = 'block';
-        }
+// Fonction auxiliaire pour démarrer un quiz par catégorie
+function startCategoryQuiz(categoryId) {
+    const categoryQuestions = createCategoryQuiz(categoryId);
+    
+    if (categoryQuestions && categoryQuestions.length > 0) {
+        currentQuiz = categoryId;
+        currentQuestion = 0;
+        score = 0;
+        questions = categoryQuestions;
+        
+        // Mettre à jour le titre du quiz
+        document.getElementById('quiz-title').textContent = getQuizTitle(categoryId);
+        document.getElementById('total-questions').textContent = questions.length;
+        // Cacher l'écran d'accueil et montrer l'écran de quiz
+        document.getElementById('home-screen').style.display = 'none';
+        document.getElementById('quiz-screen').style.display = 'block';
+        document.getElementById('result-screen').style.display = 'none';
+        
+        // Afficher la première question
+        showQuestion();
+        return true;
+    }
+    
+    alert("Ce quiz n'est pas encore disponible à ce niveau de difficulté. Essayez-en un autre ou changez de niveau.");
+    return false;
+}
 
-        // Fonction pour passer à la question suivante
-        function nextQuestion() {
-            currentQuestionIndex++;
-            
-            if (currentQuestionIndex < questions.length) {
-                displayQuestion();
-            } else {
-                showResults();
-            }
-        }
+// Fonction pour gérer les catégories principales
+function startQuiz(quizId) {
+    // Vérifier d'abord si c'est une catégorie principale
+    if (quizId === 'shonen' || quizId === 'seinen' || quizId === 'classics' || quizId === 'movies') {
+        return startCategoryQuiz(quizId);
+    }
+    
+    // Sinon, c'est un quiz normal pour une série spécifique
+    currentQuiz = quizId;
+    currentQuestion = 0;
+    score = 0;
+    
+    // Vérifier si le quiz existe
+    if (!quizDatabase[quizId] || !quizDatabase[quizId][difficulty]) {
+        alert("Ce quiz n'est pas encore disponible à ce niveau de difficulté. Essayez-en un autre ou changez de niveau.");
+        return false;
+    }
+    
+    // Récupérer les questions pour ce quiz et cette difficulté
+    questions = shuffleArray([...quizDatabase[quizId][difficulty]]);
+    
+    // Limiter à 10 questions
+    if (questions.length > 10) {
+        questions = questions.slice(0, 10);
+    }
+    
+    // Mettre à jour le titre du quiz
+    document.getElementById('quiz-title').textContent = getQuizTitle(quizId);
+    document.getElementById('total-questions').textContent = questions.length;
+    
+    // Cacher l'écran d'accueil et montrer l'écran de quiz
+    document.getElementById('home-screen').style.display = 'none';
+    document.getElementById('quiz-screen').style.display = 'block';
+    document.getElementById('result-screen').style.display = 'none';
+    
+    // Afficher la première question
+    showQuestion();
+    return true;
+}
 
-        // Fonction pour afficher les résultats
-        function showResults() {
-            document.getElementById('quiz-screen').style.display = 'none';
-            document.getElementById('result-screen').style.display = 'block';
-            
-            document.getElementById('score').textContent = score;
-            document.getElementById('max-score').textContent = questions.length;
-            
-            // Afficher un message en fonction du score
-            const resultMessage = document.getElementById('result-message');
-            const percentage = (score / questions.length) * 100;
-            
-            if (percentage >= 80) {
-                resultMessage.textContent = "Excellent! Vous êtes un vrai fan d'animés!";
-            } else if (percentage >= 60) {
-                resultMessage.textContent = "Bien joué! Vous avez de bonnes connaissances!";
-            } else if (percentage >= 40) {
-                resultMessage.textContent = "Pas mal! Mais il y a encore des animés à découvrir!";
-            } else {
-                resultMessage.textContent = "Vous avez besoin de regarder plus d'animés!";
-            }
-            
-            // Actualiser toutes les publicités à la fin du quiz
-            try {
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            } catch (e) {
-                console.log('Erreur de chargement des publicités:', e);
-            }
+// Fonction pour la gestion des publicités
+function adsense() {
+    // Essayer de recharger les publicités si elles sont disponibles
+    if (window.adsbygoogle && typeof window.adsbygoogle.push === 'function') {
+        try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+            console.log('Erreur lors du chargement des publicités:', e);
         }
+    }
+}
 
-        // Fonction pour retourner à l'écran d'accueil
-        function returnToHome() {
-            document.getElementById('home-screen').style.display = 'block';
-            document.getElementById('result-screen').style.display = 'none';
-        }
+// Fonction pour partager le résultat sur les réseaux sociaux
+function shareResult() {
+    const percentage = (score / questions.length) * 100;
+    const quizTitle = getQuizTitle(currentQuiz);
+    const shareText = `J'ai obtenu ${score}/${questions.length} (${percentage.toFixed(0)}%) au ${quizTitle} sur AniméQuiz! Peux-tu faire mieux?`;
+    
+    // URL pour le partage (à ajuster selon votre domaine réel)
+    const shareUrl = encodeURIComponent(window.location.href);
+    
+    // Ouvrir la fenêtre de partage pour Twitter
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${shareUrl}`, '_blank');
+}
 
-        // Fonction pour recharger les publicités (à utiliser si nécessaire)
-        function refreshAds() {
-            try {
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            } catch (e) {
-                console.log('Erreur de chargement des publicités:', e);
-            }
-        }
+// Ajouter un bouton de partage dans l'écran de résultat
+function addShareButton() {
+    const resultScreen = document.getElementById('result-screen');
+    const shareButton = document.createElement('button');
+    shareButton.textContent = 'Partager mon résultat';
+    shareButton.className = 'share-button';
+    shareButton.onclick = shareResult;
+    
+    // Insérer le bouton avant le bouton de retour à l'accueil
+    const returnButton = resultScreen.querySelector('button');
+    resultScreen.insertBefore(shareButton, returnButton);
+}
+
+// Fonction pour sauvegarder les meilleurs scores en local storage
+function saveHighScore() {
+    const quizId = currentQuiz;
+    const percentage = (score / questions.length) * 100;
+    
+    // Structure pour stocker les meilleurs scores
+    let highScores = JSON.parse(localStorage.getItem('animeQuizHighScores')) || {};
+    
+    // Si ce quiz n'a pas encore de score ou si le nouveau score est meilleur
+    if (!highScores[quizId] || highScores[quizId] < percentage) {
+        highScores[quizId] = percentage;
+        localStorage.setItem('animeQuizHighScores', JSON.stringify(highScores));
+        return true;
+    }
+    
+    return false;
+}
+
+// Fonction pour afficher un message de nouveau record
+function showNewHighScore() {
+    if (saveHighScore()) {
+        const resultMessage = document.getElementById('result-message');
+        const newHighScoreMsg = document.createElement('p');
+        newHighScoreMsg.textContent = "🎉 Nouveau record personnel pour ce quiz! 🎉";
+        newHighScoreMsg.className = 'high-score-message';
+        resultMessage.appendChild(newHighScoreMsg);
+    }
+}
+
+// Enrichir la fonction showResults pour inclure le partage et les records
+function showResults() {
+    // Cacher l'écran de quiz et montrer l'écran de résultat
+    document.getElementById('quiz-screen').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'block';
+    
+    // Mettre à jour le score
+    document.getElementById('score').textContent = score;
+    document.getElementById('max-score').textContent = questions.length;
+    
+    // Afficher un message basé sur le score
+    const resultMessage = document.getElementById('result-message');
+    const percentage = (score / questions.length) * 100;
+    
+    let message;
+    if (percentage === 100) {
+        message = "Félicitations! Vous êtes un véritable otaku! Votre connaissance des animés est impressionnante!";
+    } else if (percentage >= 80) {
+        message = "Excellent résultat! Vous êtes un grand fan d'animés!";
+    } else if (percentage >= 60) {
+        message = "Bon travail! Vous avez de bonnes connaissances sur les animés!";
+    } else if (percentage >= 40) {
+        message = "Pas mal! Continuez à regarder plus d'animés pour améliorer votre score!";
+    } else {
+        message = "Il semble que vous débutez dans le monde des animés. Continuez à explorer!";
+    }
+    
+    resultMessage.textContent = message;
+    
+    // Vérifier et afficher un nouveau record si applicable
+    showNewHighScore();
+    
+    // Assurez-vous que le bouton de partage est présent
+    addShareButton();
+    
+    // Charger les publicités sur l'écran de résultat
+    adsense();
+}
+
+// Fonction pour suggérer des quiz similaires après avoir terminé un quiz
+function suggestSimilarQuizzes() {
+    const similarQuizzes = {
+        one_piece: ['naruto', 'dragon_ball', 'my_hero_academia'],
+        naruto: ['one_piece', 'dragon_ball', 'demon_slayer'],
+        dragon_ball: ['one_piece', 'naruto', 'my_hero_academia'],
+        death_note: ['monster', 'psycho_pass', 'tokyo_ghoul'],
+        spirited_away: ['mononoke', 'totoro', 'howls_castle'],
+        cowboy_bebop: ['evangelion', 'ghost_shell', 'akira'],
+        // Ajouter d'autres relations similaires
+    };
+    
+    // Si ce quiz a des suggestions
+    if (similarQuizzes[currentQuiz]) {
+        const suggestions = similarQuizzes[currentQuiz];
+        const resultScreen = document.getElementById('result-screen');
+        
+        // Créer un conteneur pour les suggestions
+        const suggestionsContainer = document.createElement('div');
+        suggestionsContainer.className = 'quiz-suggestions';
+        suggestionsContainer.innerHTML = '<h3>Vous pourriez aussi aimer :</h3>';
+        
+        // Créer une liste de boutons pour les quiz suggérés
+        const suggestionList = document.createElement('div');
+        suggestionList.className = 'suggestion-buttons';
+        
+        suggestions.forEach(quizId => {
+            const button = document.createElement('button');
+            button.textContent = getQuizTitle(quizId);
+            button.className = 'suggestion-btn';
+            button.onclick = function() { startQuiz(quizId); };
+            suggestionList.appendChild(button);
+        });
+        
+        suggestionsContainer.appendChild(suggestionList);
+        
+        // Insérer les suggestions avant la publicité de fin
+        const lastAd = resultScreen.querySelector('.ad-container:last-child');
+        resultScreen.insertBefore(suggestionsContainer, lastAd);
+    }
+}
+
+// Enrichir davantage la fonction showResults
+function showResults() {
+    // Cacher l'écran de quiz et montrer l'écran de résultat
+    document.getElementById('quiz-screen').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'block';
+    
+    // Mettre à jour le score
+    document.getElementById('score').textContent = score;
+    document.getElementById('max-score').textContent = questions.length;
+    
+    // Afficher un message basé sur le score
+    const resultMessage = document.getElementById('result-message');
+    const percentage = (score / questions.length) * 100;
+    
+    let message;
+    if (percentage === 100) {
+        message = "Félicitations! Vous êtes un véritable otaku! Votre connaissance des animés est impressionnante!";
+    } else if (percentage >= 80) {
+        message = "Excellent résultat! Vous êtes un grand fan d'animés!";
+    } else if (percentage >= 60) {
+        message = "Bon travail! Vous avez de bonnes connaissances sur les animés!";
+    } else if (percentage >= 40) {
+        message = "Pas mal! Continuez à regarder plus d'animés pour améliorer votre score!";
+    } else {
+        message = "Il semble que vous débutez dans le monde des animés. Continuez à explorer!";
+    }
+    
+    resultMessage.textContent = message;
+    
+    // Vérifier et afficher un nouveau record si applicable
+    showNewHighScore();
+    
+    // Assurez-vous que le bouton de partage est présent
+    addShareButton();
+    
+    // Suggérer des quiz similaires
+    suggestSimilarQuizzes();
+    
+    // Charger les publicités sur l'écran de résultat
+    adsense();
+}
+
+// Gestion des événements au chargement de la page
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialiser l'interface
+    document.getElementById('home-screen').style.display = 'block';
+    document.getElementById('quiz-screen').style.display = 'none';
+    document.getElementById('result-screen').style.display = 'none';
+    
+    // Charger les publicités initiales
+    adsense();
+    
+    // Marquer la difficulté par défaut comme active
+    const defaultDifficultyBtn = document.querySelector(`.difficulty-btn.${difficulty}`);
+    if (defaultDifficultyBtn) {
+        defaultDifficultyBtn.classList.add('active');
+    }
+});
+        
+        // Cacher l'écran d'accueil et montrer l'écran de quiz
     </script>
 
     
